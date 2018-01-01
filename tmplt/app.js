@@ -9,7 +9,8 @@ const app = express()
 		res.render('index');
 	})
 	app.get('/contact', (req, res) => {
-		res.render('contact')
+		console.log(req.query)
+		res.render('contact', {qs: req.query})
 	})
 	app.get('/profile/:name', (req, res) => {
 		const data = {
