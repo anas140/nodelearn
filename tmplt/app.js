@@ -12,7 +12,8 @@ const app = express()
 	app.get('/profile/:name', (req, res) => {
 		const data = {
 			age: 22,
-			job: 'Web Developer'
+			job: 'Web Developer',
+			hobbies: ['code', 'eat', 'sleep', 'loop']
 		}
 		res.render('profile', {person: req.params.name, data: data})
 	})

@@ -7,11 +7,19 @@
 		body{background: skyblue; font-family: verdana; color: #fff; padding: 30px;}
 		h1{font-size: 48px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
 		p {font-size: 16px; text-align: center;}
+		h2 {font-size: 30px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
+		li {font-size: 16px; text-align: center; list-style: none;}
 	</style>
 </head>
 <body>
 	<h1>Welcome <%= person %></h1>
 	<p><%= data.age %></p>
 	<p><%= data.job %></p>
+	<h2>Hobbies</h2>
+	<ul>
+		<% data.hobbies.forEach((hobbie) => { %>
+			<li><%= hobbie %></li>
+		<% }) %>
+	</ul>
 </body>
 </html>
