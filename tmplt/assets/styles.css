@@ -3,3 +3,6 @@ h1{font-size: 48px; text-transform: uppercase; letter-spacing: 2px; text-align: 
 p {font-size: 16px; text-align: center;}
 h2 {font-size: 30px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
 li {font-size: 16px; text-align: center; list-style: none;}
+label {
+	margin-right: 100px;
+}

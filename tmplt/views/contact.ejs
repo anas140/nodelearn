@@ -10,5 +10,18 @@
 	<h1>Contact Page</h1>
 	<p>Awesom node js prrogramming</p>
 	<p><%= qs.name %></p>
+	<h2>Contact</h2>
+	<form method="POST" action="/contact">
+		<label>Who</label>
+		<input type="text" name="who" placeholder="Who to Contact?">
+		<br>		
+		<label>Department</label>
+		<input type="text" name="department" placeholder="Enter Department">
+		<br>
+		<label>Email</label>
+		<input type="text" name="email" placeholder="Enter Your Email">
+		<br>
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>
