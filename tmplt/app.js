@@ -4,10 +4,10 @@ const app = express()
 	app.set('view engine', 'ejs')
 
 	app.get('/', (req,res) => {
-		res.sendFile(__dirname + '/views/index.html');
+		res.render('index');
 	})
 	app.get('/contact', (req, res) => {
-		res.sendFile(__dirname + '/views/contact.html')
+		res.render('contact')
 	})
 	app.get('/profile/:name', (req, res) => {
 		const data = {
