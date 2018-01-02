@@ -2,7 +2,7 @@ const express = require('express')
 
 const app = express()
 app.get('/', (req,res) => {
-	res.send('home page')
+	// res.send('home page')
 })
 app.get('/contact', (req,res) => {
 	res.send('Contact Page')
