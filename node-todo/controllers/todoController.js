@@ -15,26 +15,34 @@ var todoSchema = new mongoose.Schema({
 
 // Model
 var Todo = mongoose.model('Todo', todoSchema)
-var item1 = Todo({item: 'buy flowers'}).save(function(err) {
-	if(err) console.log(err)
-	console.log('item saved')
-})
+// var item1 = Todo({item: 'buy flowers'}).save(function(err) {
+// 	if(err) console.log(err)
+// 	console.log('item saved')
+// })
 
-var data = [{item: 'Get money'}, {item: 'complete nodejs basic'}, {item: 'learn mysql'}, {item: 'learn middleware'}, {item: 'learn rest api'}, {item: 'learn jwt'}, {item: 'learn oauth'}, {item: 'learn react'}, {item: 'learn querys mysl'}, {item: 'learn mysql normalisation'}]
+// var data = [{item: 'Get money'}, {item: 'complete nodejs basic'}, {item: 'learn mysql'}, {item: 'learn middleware'}, {item: 'learn rest api'}, {item: 'learn jwt'}, {item: 'learn oauth'}, {item: 'learn react'}, {item: 'learn querys mysl'}, {item: 'learn mysql normalisation'}]
 var urlencodedParser = bodyParser.urlencoded({extended: false})
 module.exports = function(app) {
 	app.get('/todo', (req, res) => {
-		res.render('todo', {todos: data})
+		//get data from the mongodb and pass it to the view
+		Todo.find({}, function(err, docs) {
+			if(err) console.log(err)
+			res.render('todo', {todos: docs})
+		})
+		
 	})
 	app.post('/todo', urlencodedParser, (req, res) => {
-		console.log(req.body)
-		data.push(req.body)
-		res.json(data)
+		// get the data from form and save it to mongodb
+		var newTodo = Todo(req.body).save(function(err, data) {
+			if(err) console.log(err)
+			res.json(data)
+		})
 	})
 	app.delete('/todo/:item', (req, res) => {
-		data = data.filter(function(todo) {
-			return todo.item.replace(/ /g, '-') !== req.params.item
+		// delete the requested item from the mongo db
+		Todo.find({item: req.params.item.replace(/\-/g, " ")}).remove(function(err, data) {
+			if(err) console.log(err)
+			res.json(data)
 		})
-		res.json(data)
 	})
 }
