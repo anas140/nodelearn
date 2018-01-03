@@ -1,0 +1,14 @@
+{
+  "name": "connection",
+  "version": "1.0.0",
+  "description": "Mysql Connection",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anas",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.15.0"
+  }
+}
